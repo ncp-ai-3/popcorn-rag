@@ -1,0 +1,10 @@
+services:
+  embed:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_CACHE_DIR: /model_cache
+      EMBEDDING_DIMENSION: "768"
+    volumes:
+      - ${MODEL_HOST_PATH:-./model_cache}:/model_cache:ro
