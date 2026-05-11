@@ -1,7 +1,10 @@
 services:
   embed:
     build: .
+    # 이미지 CMD 캐시와 무관하게 컨테이너 내부는 항상 8000 (호스트 8001과 매핑)
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
     ports:
+      # 호스트에서 curl이 000이면 프록시 가능성 → curl --noproxy '*' ... 또는 NO_PROXY=127.0.0.1,localhost
       - "8001:8000"
     environment:
       MODEL_CACHE_DIR: /model_cache
