@@ -2,7 +2,7 @@ services:
   embed:
     build: .
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       MODEL_CACHE_DIR: /model_cache
       EMBEDDING_MODEL_ID: intfloat/multilingual-e5-base
