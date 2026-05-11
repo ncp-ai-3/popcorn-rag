@@ -5,6 +5,8 @@ services:
       - "8000:8000"
     environment:
       MODEL_CACHE_DIR: /model_cache
+      EMBEDDING_MODEL_ID: intfloat/multilingual-e5-base
       EMBEDDING_DIMENSION: "768"
+    # 첫 기동 시 Hub에서 받으려면 :rw 필요. 호스트 디렉터리는 컨테이너 사용자(UID 1000)에 쓰기 가능하게 두는 것이 안전합니다.
     volumes:
-      - ${MODEL_HOST_PATH:-./model_cache}:/model_cache:ro
+      - ${MODEL_HOST_PATH:-./model_cache}:/model_cache
